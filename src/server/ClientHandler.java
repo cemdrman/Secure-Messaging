@@ -11,7 +11,6 @@ public class ClientHandler extends Thread {
 	private DataInputStream dis;
 	private DataOutputStream dos;
 
-	// Constructor
 	public ClientHandler(Socket s) {
 		this.s = s;
 		try {
@@ -22,31 +21,24 @@ public class ClientHandler extends Thread {
 			e.printStackTrace();
 		}
 	}
+	protected String readMessage() {
+        try {
+			return dis.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+    }
 
 	@Override
 	public void run() {
 		System.out.println("A new client is connected : " + s.getPort());
-		String received;
+		
+		String received = readMessage();
 		String toreturn;
-		/*
-		 * while (true) { try {
-		 * 
-		 * // Ask user what he wants dos.writeUTF("What do you want?[Date | Time]..\n" +
-		 * "Type Exit to terminate connection.");
-		 * 
-		 * // receive the answer from client received = dis.readUTF();
-		 * 
-		 * if (received.equals("Exit")) { System.out.println("Client " + this.s +
-		 * " sends exit..."); System.out.println("Closing this connection.");
-		 * this.s.close(); System.out.println("Connection closed"); break; }
-		 * 
-		 * // creating Date object Date date = new Date();
-		 * 
-		 * // write on output stream based on the // answer from the client switch
-		 * (received) {
-		 * 
-		 * } } catch (IOException e) { e.printStackTrace(); } }
-		 */
+
+		System.out.println(s.getPort() + ": sended " + received);
 
 	}
 
