@@ -33,25 +33,21 @@ public class RegisterServer {
 			System.out.println("-----------REGISTER SERVER-----------");
 			System.out.println("****************************");
 			System.out.println("\tServer Info");
-			System.out.println("Server IP            : " + address.getHostName());
-			System.out.println("Server Port Number   : " + String.valueOf(serverPort));
+			System.out.println("Register Server IP            : " + address.getHostName());
+			System.out.println("Register Server Port Number   : " + String.valueOf(serverPort));
 			System.out.println("****************************");
-			System.out.println("Server Started...");
+			System.out.println("Register Server Started...");
 			System.out.println("Waiting for connections...");
 
 			while (true) {
 				Socket connectedSocket;
 				// socket object to receive incoming client requests
 				connectedSocket = serverSocket.accept();
-
 				Thread clientHandler = new RegisterHandler(connectedSocket);
 				clientHandler.start();
-
 			}
-
 		} catch (IOException ex) {
 			Logger.getLogger(RegisterServer.class.getName()).log(Level.SEVERE, null, ex);
-
 		}
 	}
 
