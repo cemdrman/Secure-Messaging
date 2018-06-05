@@ -3,10 +3,9 @@ package client;
 public class ClientTest2 {
 
 	public static void main(String[] args) {
-		Client client = new Client();
+		Client client = new Client("Emir");
 		client.connetToServer();
-		client.sendMessage("Emir");
-		
+				
 	}
 
 }
